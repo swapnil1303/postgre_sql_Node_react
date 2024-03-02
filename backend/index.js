@@ -1,19 +1,34 @@
 const express = require('express');
+const cors=require('cors');
 const app = express();
+app.use(
+    cors({
+        origin:"http://localhost:3000"
+    })
+);
 const port = 5000;
 
-// Sample data (replace with actual database queries)
-const customers = require('./customers.json');
+const fs = require('fs');
+const path = require('path');
+const customersFilePath = path.join(__dirname, 'customers.json');
 
 app.get('/api/customers', (req, res) => {
-    // Pagination logic (assuming page number starts from 1)
     const page = req.query.page || 1;
     const perPage = 20;
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
-    const data = customers.slice(startIndex, endIndex);
 
-    res.json({ data, total: customers.length });
+    fs.readFile(customersFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            res.status(500).json({ error: 'Internal server error' });
+            return;
+        }
+
+        const customers = JSON.parse(data);
+        const slicedCustomers = customers.slice(startIndex, endIndex);
+        res.json({ data: slicedCustomers, total: customers.length });
+    });
 });
 
 app.listen(port, () => {
