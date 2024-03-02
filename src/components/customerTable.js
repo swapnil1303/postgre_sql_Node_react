@@ -55,31 +55,31 @@ const CustomerTable = () => {
 
     return (
         <div>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '30px', textAlign: 'center' }}>
+            <div className="container" style={{ display: 'flex', justifyContent: 'center', marginTop: '30px', textAlign: 'center' }}>
                 <SearchInput onSearch={handleSearch} />
                 <SortOptions currentSortField={sortField} onSortByChange={handleSortByChange} onSortOrderChange={toggleSortOrder} />
             </div>
-            <div className="container d-flex justify-content-between" style={{width:'fit-content', marginTop:'40px'}}>
-                <table style={{width:'80vw', backgroundColor:'grey', color:'white'}}>
-                    <thead style={{color:'white',backgroundColor:'black'}}>
+            <div className="container d-flex justify-content-between" style={{ width: 'fit-content', marginTop: '40px' }}>
+                <table style={{ width: '80vw', backgroundColor: 'grey', color: 'white' }}>
+                    <thead style={{ color: 'white', backgroundColor: 'black' }}>
                         <tr>
-                            <th style={{padding:'10px'}}>Customer Name</th>
-                            <th style={{padding:'10px'}}>Age</th>
-                            <th style={{padding:'10px'}}>Phone</th>
-                            <th style={{padding:'10px'}}>Location</th>
-                            <th style={{padding:'10px'}}>Created At</th>
+                            <th style={{ padding: '10px' }}>Customer Name</th>
+                            <th style={{ padding: '10px' }}>Age</th>
+                            <th style={{ padding: '10px' }}>Phone</th>
+                            <th style={{ padding: '10px' }}>Location</th>
+                            <th style={{ padding: '10px' }}>Created At</th>
                         </tr>
                     </thead>
                     <TableRows customers={filteredCustomers} />
                 </table>
             </div>
-            <div>
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button key={page} onClick={() => setCurrentPage(page)}>
-                            {page}
-                        </button>
-                    ))}
-                </div>
+            <div style={{display:'flex',justifyContent:'center',margin:'10px 0'}}>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <button key={page} onClick={() => setCurrentPage(page)} style={{height:'40px',width:'40px', margin:'0 5px',font:'5px',fontWeight:'bold',borderRadius:'20px',background:'red'}}>
+                        {page}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 };
