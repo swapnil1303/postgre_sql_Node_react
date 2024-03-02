@@ -9,7 +9,7 @@ const CustomerTable = () => {
 
     useEffect(() => {
         fetchCustomers();
-    }, [currentPage]);
+    },);
 
     const fetchCustomers = async () => {
         try {
