@@ -15,7 +15,7 @@ const CustomerTable = () => {
 
     const fetchCustomers = async () => {
         try {
-            const response = await fetch(`/api/customers?page=${currentPage}&sortField=${sortField}&sortOrder=${sortOrder}`);
+            const response = await fetch(`http://localhost:5000/api/customers?page=${currentPage}&sortField=${sortField}&sortOrder=${sortOrder}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
