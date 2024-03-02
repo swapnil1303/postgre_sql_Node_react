@@ -14,8 +14,10 @@ const SearchInput = ({ onSearch }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Search..." value={searchTerm} onChange={handleChange} />
-            <button type="submit">Search</button>
+            <div className='container d-flex my-40'>
+            <input className="form-control me-2" type="text" placeholder="Search..." aria-label="Search" value={searchTerm} onChange={handleChange}/>
+            <button className="btn btn-outline-success" type="submit">Search</button>
+            </div>
         </form>
     );
 };

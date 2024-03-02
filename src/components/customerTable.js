@@ -13,7 +13,7 @@ const CustomerTable = () => {
 
     useEffect(() => {
         fetchCustomers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, sortField, sortOrder]);
 
     const fetchCustomers = async () => {
@@ -55,27 +55,31 @@ const CustomerTable = () => {
 
     return (
         <div>
-            <SearchInput onSearch={handleSearch} />
-            <SortOptions currentSortField={sortField} onSortByChange={handleSortByChange} onSortOrderChange={toggleSortOrder} />
-            <table>
-                <thead>
-                    <tr>
-                        <th>Customer Name</th>
-                        <th>Age</th>
-                        <th>Phone</th>
-                        <th>Location</th>
-                        <th>Created At</th>
-                    </tr>
-                </thead>
-                <TableRows customers={filteredCustomers} />
-            </table>
-            <div>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <button key={page} onClick={() => setCurrentPage(page)}>
-                        {page}
-                    </button>
-                ))}
+            <div className="container" style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '30px', textAlign: 'center' }}>
+                <SearchInput onSearch={handleSearch} />
+                <SortOptions currentSortField={sortField} onSortByChange={handleSortByChange} onSortOrderChange={toggleSortOrder} />
             </div>
+            <div className="container d-flex justify-content-between" style={{width:'fit-content', marginTop:'40px'}}>
+                <table style={{width:'80vw', backgroundColor:'grey', color:'white'}}>
+                    <thead style={{color:'white',backgroundColor:'black'}}>
+                        <tr>
+                            <th style={{padding:'10px'}}>Customer Name</th>
+                            <th style={{padding:'10px'}}>Age</th>
+                            <th style={{padding:'10px'}}>Phone</th>
+                            <th style={{padding:'10px'}}>Location</th>
+                            <th style={{padding:'10px'}}>Created At</th>
+                        </tr>
+                    </thead>
+                    <TableRows customers={filteredCustomers} />
+                </table>
+            </div>
+            <div>
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                        <button key={page} onClick={() => setCurrentPage(page)}>
+                            {page}
+                        </button>
+                    ))}
+                </div>
         </div>
     );
 };

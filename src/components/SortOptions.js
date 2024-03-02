@@ -2,7 +2,7 @@ import React from 'react';
 
 const SortOptions = ({ currentSortField, onSortByChange, onSortOrderChange, sortOrder }) => {
     return (
-        <div>
+        <div className='container sortOptions'>
             <label htmlFor="sortBy">Sort By:</label>
             <select id="sortBy" value={currentSortField} onChange={(e) => onSortByChange(e.target.value)}>
                 <option value="customer_name">Customer Name</option>
