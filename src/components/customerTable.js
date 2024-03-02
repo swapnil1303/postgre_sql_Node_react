@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TableRows from './TableRows';
+import SearchInput from './SearchInput';
+import SortOptions from './SortOptions';
 
 const CustomerTable = () => {
     const [customers, setCustomers] = useState([]);
@@ -28,12 +30,12 @@ const CustomerTable = () => {
         }
     };
 
-    const handleSearch = (e) => {
-        setSearchTerm(e.target.value);
+    const handleSearch = (value) => {
+        setSearchTerm(value);
     };
 
-    const handleSortByChange = (e) => {
-        setSortField(e.target.value);
+    const handleSortByChange = (value) => {
+        setSortField(value);
     };
 
     const toggleSortOrder = () => {
@@ -53,13 +55,8 @@ const CustomerTable = () => {
 
     return (
         <div>
-            <input type="text" placeholder="Search..." onChange={handleSearch} />
-            <label htmlFor="sortBy">Sort By:</label>
-            <select id="sortBy" value={sortField} onChange={handleSortByChange}>
-                <option value="customer_name">Customer Name</option>
-                <option value="location">Location</option>
-            </select>
-            <button onClick={toggleSortOrder}>{sortOrder === 'asc' ? 'Sort Asc' : 'Sort Desc'}</button>
+            <SearchInput onSearch={handleSearch} />
+            <SortOptions currentSortField={sortField} onSortByChange={handleSortByChange} onSortOrderChange={toggleSortOrder} />
             <table>
                 <thead>
                     <tr>
