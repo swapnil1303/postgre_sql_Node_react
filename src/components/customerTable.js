@@ -11,6 +11,7 @@ const CustomerTable = () => {
 
     useEffect(() => {
         fetchCustomers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, sortField, sortOrder]);
 
     const fetchCustomers = async () => {
