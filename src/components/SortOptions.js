@@ -8,7 +8,7 @@ const SortOptions = ({ currentSortField, onSortByChange, onSortOrderChange, sort
                 <option value="customer_name">Customer Name</option>
                 <option value="location">Location</option>
             </select>
-            <button onClick={onSortOrderChange} style={{margin: '0 15px',height: '39px',width: '120px',borderRadius:'5px'}}>Sort {sortOrder === 'asc' ? 'Descending' : 'Ascending'}  </button>
+            <button onClick={onSortOrderChange} style={{margin: '0 15px',height: '39px',width: '130px',borderRadius:'5px'}}>Sort {sortOrder === 'asc' ? 'Descending' : 'Ascending'}  </button>
         </div>
     );
 };
